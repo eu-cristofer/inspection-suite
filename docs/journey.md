@@ -12,7 +12,7 @@ This is the running log of the project: where we are, what happened, what's next
 | ID | Project | Repo | Lane | Status | Progress | Next action |
 |---|---|---|---|---|---|---|
 | P0 | `001_suite-bootstrap` | inspection-suite | user | ✅ done (ready to archive) | 3/3 | Merge PR into `main`; archive with `/sprint-loop archive` |
-| P1 | `006_pdf-release-v0-1` | fork `eu-cristofer/pdfcraft` | A | 🟦 registered (branch `feat/006-pdf-release-v0-1`, commit 29119187, local only) | 0/5 | `/sprint-loop run 006_pdf-release-v0-1` in `~/GitHub/pdfcraft.back` (sprint 5 waits for U1) |
+| P1 | `006_pdf-release-v0-1` | fork `eu-cristofer/pdfcraft` | A | 🟦 in progress (branch `feat/006-pdf-release-v0-1`, local) | 1/6 | Sprint 1b (baseline repair, D-015) |
 | P2 | `002_pump-core` | inspection-suite | B | ⬜ ready to register | 0/7 | Register after the P0 PR merges; run in its own worktree |
 | P3 | `003_report-kit` | inspection-suite | C | ⬜ ready to register | 0/6 | Register after the P0 PR merges; run in its own worktree |
 | P4 | `004_pump-cli` | inspection-suite | B | ⏸ blocked by P2, P3 | 0/6 | — |
@@ -58,6 +58,13 @@ Order: register **P0** and **P1** now. Register **P2** and **P3** right after G0
 ---
 
 ## Log
+
+### 2026-10-29 — P1 sprint 1 done; sprint 1b added (D-015)
+- Sprint 1 (`494c4b95`): `branding` module, contributor-original suite mark replacing the ArtCraft logo, "Based on PdfCraft" in About, window title from `APP_NAME`.
+- Baseline commits `0a8d8cd6` and `9aaede9b` fix trivial problems in the earlier fork work: fmt, clippy on rustc 1.99, a stale OCR test, `crops_panel` missing from PAGE_MODULES.
+- ui-egui: 1755 passed, 20 failed, all of them pre-existing: crop accessible name, stale snapshot test, fill_sign cursor, 10 CJK/Thai glyph tests without `craft-fonts`. The owner approved a repair sprint 1b (D-015).
+- The ArtCraft community links (Discord, website) were found and added to sprint 2 (`ae3c9d67`).
+- **Next:** sprint 1b, then sprint 2.
 
 ### 2026-10-29 — Design restored (D-014 supersedes D-013)
 - Owner instruction: "follow strictly our design".
