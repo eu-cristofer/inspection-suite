@@ -1,0 +1,13 @@
+[package]
+name = "pump-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "API 610 shop performance-test calculations and acceptance verdicts. Pure: no I/O, no UI."
+publish = false
+
+[lints]
+workspace = true

@@ -27,6 +27,6 @@ Each run MUST:
 
 Status: active
 
-- [ ] [Sprint 1 — Workspace skeleton and conventions](./sprint-1.md)
+- [x] [Sprint 1 — Workspace skeleton and conventions](./sprint-1.md) — done 2026-10-29
 - [ ] [Sprint 2 — `evidence-format` v1](./sprint-2.md)
 - [ ] [Sprint 3 — Freeze the interface types, CI and the private repo layout](./sprint-3.md)

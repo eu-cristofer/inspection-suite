@@ -1,6 +1,6 @@
 # `<Suite>` — Open-source inspection tools by Costa Inspection
 
-> Status: planning · No code yet · The licence will be MIT OR Apache-2.0
+> Status: bootstrapping (workspace skeleton) · MIT OR Apache-2.0
 
 A suite of tools for an inspection company that turn inspection inputs into traceable, reproducible evidence and reports.
 
@@ -25,3 +25,19 @@ A suite of tools for an inspection company that turn inspection inputs into trac
 ## Active sprint projects
 
 - [`001_suite-bootstrap`](docs/changes/001_suite-bootstrap/README.md): workspace, conventions, frozen contracts, CI (gate G0).
+
+## Building
+
+```sh
+cargo build
+cargo test
+```
+
+Quality gates (run before every commit, scoped to the crates you touched):
+
+```sh
+cargo fmt --check
+cargo clippy -p <crate> --all-targets -- -D warnings
+cargo test -p <crate>
+cargo deny check
+```
