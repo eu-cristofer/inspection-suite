@@ -12,7 +12,7 @@ This is the running log of the project: where we are, what happened, what's next
 | ID | Project | Repo | Lane | Status | Progress | Next action |
 |---|---|---|---|---|---|---|
 | P0 | `001_suite-bootstrap` | inspection-suite | user | 🟦 registered (branch `feat/001-suite-bootstrap`) | 0/3 | `/sprint-loop run 001_suite-bootstrap`; create the GitHub repos (needed for CI in sprint 3) |
-| P1 | `006_pdf-release-v0-1` | fork | A | ⬜ not registered | 0/5 | Register in fork on a branch from `feat/crop-panel-unification` |
+| P1 | `006_pdf-release-v0-1` | fork | A | 🟦 registered (branch `feat/006-pdf-release-v0-1`, commit 29119187) | 0/5 | `/sprint-loop run 006_pdf-release-v0-1` in the fork (sprint 5 waits for U1) |
 | P2 | `002_pump-core` | inspection-suite | B | ⏸ blocked by G0 | 0/7 | Wait for P0 |
 | P3 | `003_report-kit` | inspection-suite | C | ⏸ blocked by G0 | 0/6 | Wait for P0 |
 | P4 | `004_pump-cli` | inspection-suite | B | ⏸ blocked by P2, P3 | 0/6 | — |
@@ -58,6 +58,12 @@ Order: register **P0** and **P1** now. Register **P2** and **P3** right after G0
 ---
 
 ## Log
+
+### 2026-10-29 — P0 and P1 registered
+- `001_suite-bootstrap` registered in `inspection-suite` (branch `feat/001-suite-bootstrap`): 3 sprints.
+- `006_pdf-release-v0-1` registered in the fork (branch `feat/006-pdf-release-v0-1`): 5 sprints. Release tag keeps the fork scheme `0.14.0-unsigned.<YYYYMMDD>`; "v0.1" is the product label.
+- GitHub repos `eu-cristofer/inspection-suite` and `eu-cristofer/costa-inspection-private` not created yet (needs the owner's action; required before P0 sprint 3 CI and P1 sprint 3).
+- **Next:** create the two GitHub repos; run both projects (`/sprint-loop run <slug>`) in separate terminals.
 
 ### 2026-10-29 — GitHub home: eu-cristofer, permanently
 - D-012 supersedes D-011: all repos stay on the personal account `eu-cristofer`; no organisation.
