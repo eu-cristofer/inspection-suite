@@ -1,0 +1,57 @@
+{
+  "package_kind": "pdfcraft.snapshot_export",
+  "manifest_version": "1.1",
+  "source_pdf": {
+    "path": "source.pdf",
+    "state": "working-copy"
+  },
+  "coordinate_space": {
+    "page_origin": "top-left",
+    "page_space": "display",
+    "units": "pt",
+    "page_rotation": "already-applied"
+  },
+  "rendering": {
+    "snapshot_source": "display-equivalent",
+    "image_format": "png",
+    "pixels_per_point": 2.0
+  },
+  "items": [
+    {
+      "id": "item_1",
+      "kind": "snapshot",
+      "page": 1,
+      "rect": {
+        "x": 72.0,
+        "y": 96.5,
+        "width": 240.0,
+        "height": 120.25
+      },
+      "image": {
+        "path": "evidence/item_1.png",
+        "width_px": 480,
+        "height_px": 241
+      },
+      "caption": "Nameplate data",
+      "note": "Rated point as stamped",
+      "ocr_text": "Q 250 m3/h  H 85 m  n 2980 rpm"
+    },
+    {
+      "id": "item_2",
+      "kind": "snapshot",
+      "page": 3,
+      "rect": {
+        "x": 36.0,
+        "y": 400.0,
+        "width": 520.0,
+        "height": 300.0
+      },
+      "image": {
+        "path": "evidence/item_2.png",
+        "width_px": 1040,
+        "height_px": 600
+      },
+      "caption": "Vendor performance curve"
+    }
+  ]
+}

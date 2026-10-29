@@ -1,0 +1,21 @@
+[package]
+name = "report-kit"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Domain-neutral report rendering: ReportDoc to DOCX and PDF, charts to PNG, atomic evidence-package writer."
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+evidence-format = { path = "../evidence-format" }
+serde.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+serde_json.workspace = true

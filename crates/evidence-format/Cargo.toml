@@ -1,0 +1,19 @@
+[package]
+name = "evidence-format"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+description = "Evidence-package manifest contract: envelope, per-kind payloads, JSON Schema and validation."
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+schemars.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true

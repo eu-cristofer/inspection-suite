@@ -11,10 +11,10 @@ This is the running log of the project: where we are, what happened, what's next
 
 | ID | Project | Repo | Lane | Status | Progress | Next action |
 |---|---|---|---|---|---|---|
-| P0 | `001_suite-bootstrap` | inspection-suite | user | ⬜ not registered | 0/3 | Create repos `eu-cristofer/inspection-suite` (public) + `eu-cristofer/costa-inspection-private` (private), `git init`, register P0 |
-| P1 | `006_pdf-release-v0-1` | fork | A | ⬜ not registered | 0/5 | Register in fork on a branch from `feat/crop-panel-unification` |
-| P2 | `002_pump-core` | inspection-suite | B | ⏸ blocked by G0 | 0/7 | Wait for P0 |
-| P3 | `003_report-kit` | inspection-suite | C | ⏸ blocked by G0 | 0/6 | Wait for P0 |
+| P0 | `001_suite-bootstrap` | inspection-suite | user | ✅ done (ready to archive) | 3/3 | Merge PR into `main`; archive with `/sprint-loop archive` |
+| P1 | `006_pdf-release-v0-1` | fork | A | 🟦 registered (branch `feat/006-pdf-release-v0-1`, commit 29119187) | 0/5 | `/sprint-loop run 006_pdf-release-v0-1` in the fork (sprint 5 waits for U1) |
+| P2 | `002_pump-core` | inspection-suite | B | ⬜ ready to register | 0/7 | Register after the P0 PR merges; run in its own worktree |
+| P3 | `003_report-kit` | inspection-suite | C | ⬜ ready to register | 0/6 | Register after the P0 PR merges; run in its own worktree |
 | P4 | `004_pump-cli` | inspection-suite | B | ⏸ blocked by P2, P3 | 0/6 | — |
 | P5–P7 | backlog | — | — | 💤 later | — | Expand specs at G1 / G3 |
 
@@ -24,7 +24,7 @@ Legend: ⬜ not started · 🟦 in progress · ✅ done · ⏸ blocked · 💤 b
 
 | Gate | Target | Status |
 |---|---|---|
-| G0 — Contract frozen | Day 1 | ⬜ |
+| G0 — Contract frozen | Day 1 | ✅ 2026-10-29 |
 | G1 — PDF Review v0.1 public | Week 1 | ⬜ |
 | G2 — Report kit ready | Week 2 | ⬜ |
 | G3 — Pump Performance v0.1 | Week 3–4 | ⬜ |
@@ -58,6 +58,19 @@ Order: register **P0** and **P1** now. Register **P2** and **P3** right after G0
 ---
 
 ## Log
+
+### 2026-10-29 — G0 reached: `001_suite-bootstrap` complete
+- Sprint 1 (`a03f116`): workspace, licences, AGENTS/CLAUDE conventions, lint and `cargo deny` gates, stub crates.
+- Sprint 2 (`eca7a13`): `evidence-format` v1. Reads the fork's v1.1 snapshot manifests unchanged and adds `suite.pump_test`; validation reports every issue.
+- Sprint 3: frozen `pump-core` and `report-kit` contract types (D-008 accepted), 3-OS CI, private repo layout (`docs/private-repo-layout.md`).
+- 37 tests; clippy, fmt and `cargo deny` clean locally. The fork repo was renamed on GitHub to `eu-cristofer/pdfcraft_first` (the old URL redirects).
+- **Next:** merge the P0 PR; register `002_pump-core` and `003_report-kit` and run them in parallel (separate worktrees).
+
+### 2026-10-29 — P0 and P1 registered
+- `001_suite-bootstrap` registered in `inspection-suite` (branch `feat/001-suite-bootstrap`): 3 sprints.
+- `006_pdf-release-v0-1` registered in the fork (branch `feat/006-pdf-release-v0-1`): 5 sprints. Release tag keeps the fork scheme `0.14.0-unsigned.<YYYYMMDD>`; "v0.1" is the product label.
+- GitHub repos `eu-cristofer/inspection-suite` and `eu-cristofer/costa-inspection-private` not created yet (needs the owner's action; required before P0 sprint 3 CI and P1 sprint 3).
+- **Next:** create the two GitHub repos; run both projects (`/sprint-loop run <slug>`) in separate terminals.
 
 ### 2026-10-29 — GitHub home: eu-cristofer, permanently
 - D-012 supersedes D-011: all repos stay on the personal account `eu-cristofer`; no organisation.
