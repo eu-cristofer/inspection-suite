@@ -12,7 +12,7 @@ This is the running log of the project: where we are, what happened, what's next
 | ID | Project | Repo | Lane | Status | Progress | Next action |
 |---|---|---|---|---|---|---|
 | P0 | `001_suite-bootstrap` | inspection-suite | user | ✅ done (ready to archive) | 3/3 | Merge PR into `main`; archive with `/sprint-loop archive` |
-| P1 | `006_pdf-release-v0-1` | fork `eu-cristofer/pdfcraft` | A | 🟦 in progress (branch `feat/006-pdf-release-v0-1`, local) | 2/6 | Sprint 2 (icon, ids, packaging metadata, community links) |
+| P1 | `006_pdf-release-v0-1` | fork `eu-cristofer/pdfcraft` | A | 🟦 in progress (branch `feat/006-pdf-release-v0-1`, pushed) | 4/6 | Sprint 4 (fork docs layout, README without marks) |
 | P2 | `002_pump-core` | inspection-suite | B | ⬜ ready to register | 0/7 | Register after the P0 PR merges; run in its own worktree |
 | P3 | `003_report-kit` | inspection-suite | C | ⬜ ready to register | 0/6 | Register after the P0 PR merges; run in its own worktree |
 | P4 | `004_pump-cli` | inspection-suite | B | ⏸ blocked by P2, P3 | 0/6 | — |
@@ -58,6 +58,18 @@ Order: register **P0** and **P1** now. Register **P2** and **P3** right after G0
 ---
 
 ## Log
+
+### 2026-10-29 — P1 sprints 2 and 3 done
+- Sprint 2 (`d92caf7b`):
+  - ArtCraft Discord, website and app page links replaced by Help (the fork's issue tracker) and "This app on GitHub", keeping "PdfCraft on GitHub" as attribution;
+  - placeholder app icon in every format;
+  - `docs/brand/` deleted;
+  - `NOTICE` says "modified version by Costa Inspection, not made or endorsed by ArtCraft";
+  - installer publisher is Costa Inspection.
+- Found for sprint 5: the MSI `UpgradeCode` is upstream's (our MSI would replace an installed upstream PdfCraft); the `ai.storyteller.pdfcraft` id and the "PdfCraft" product name are still in about 15 files.
+- Sprint 3 (`edaeb243`, `34fb8fae`): unsigned-release builds the Windows **portable zip** with `package.ps1`. Run 40854286030: the zip has both exes, `portable.txt`, `models/` (2 OCR models and their licences), licences, `NOTICE` and font notices. The macOS job never started (no hosted macOS runner available), so nothing was published.
+- The owner enabled Actions on the fork (settings, plus the fork workflow confirmation on the Actions page).
+- **Next:** sprint 4.
 
 ### 2026-10-29 — P1 sprint 1b done: suite green
 - `448d5da7`: real bug fixed in crop review (a quick corner-handle drag missed the handle, because the drag start was hit-tested where the pointer was when egui reported the drag); the OCR dropdown now has an accessible name; outdated tests updated (label helper, panel snapshot list, fill & sign cursor); new deterministic Crops panel snapshot.
