@@ -11,3 +11,11 @@ publish = false
 
 [lints]
 workspace = true
+
+[dependencies]
+evidence-format = { path = "../evidence-format" }
+serde.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+serde_json.workspace = true

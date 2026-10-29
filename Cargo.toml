@@ -28,5 +28,6 @@ unimplemented = "deny"
 [workspace.dependencies]
 schemars = "1.2.3"
 serde = { version = "1.0.229", features = ["derive"] }
-serde_json = { version = "1.0.154", features = ["preserve_order"] }
+serde_json = { version = "1.0.154", features = ["float_roundtrip", "preserve_order"] }
+uom = { version = "0.38.0", default-features = false, features = ["f64", "si", "std", "use_serde"] }
 thiserror = "2.0.21"

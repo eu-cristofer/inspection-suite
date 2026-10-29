@@ -25,8 +25,8 @@ Each run MUST:
 8. When all sprints are checked, mark the project `Status: ready to archive` and
    archive it later with `/sprint-loop archive <project>`.
 
-Status: active
+Status: ready to archive
 
 - [x] [Sprint 1 — Workspace skeleton and conventions](./sprint-1.md) — done 2026-10-29
 - [x] [Sprint 2 — `evidence-format` v1](./sprint-2.md) — done 2026-10-29
-- [ ] [Sprint 3 — Freeze the interface types, CI and the private repo layout](./sprint-3.md)
+- [x] [Sprint 3 — Freeze the interface types, CI and the private repo layout](./sprint-3.md) — done 2026-10-29
