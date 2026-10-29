@@ -21,6 +21,7 @@ Day-to-day working instructions. Binding rules are in `AGENTS.md` and win on any
 
 - Prove a test fails before the fix by reverting the fix and watching it fail.
 - Golden tests reproduce signed-off results; never regenerate them to make a test pass.
+- Integration test files start with `#![allow(clippy::unwrap_used, clippy::expect_used, clippy::panic)]`: `clippy.toml` only relaxes these lints inside `#[test]` functions, not in shared helpers.
 
 ## New crates
 

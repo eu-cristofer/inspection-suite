@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "suite.pump_test manifest",
+  "description": "The evidence-package manifest envelope.",
+  "type": "object",
+  "properties": {
+    "package_kind": {
+      "description": "Which kind of package this manifest describes.",
+      "$ref": "#/$defs/PackageKind"
+    },
+    "manifest_version": {
+      "description": "Manifest version, e.g. `\"1.1\"`.",
+      "type": "string"
+    },
+    "items": {
+      "description": "Evidence items, ids `item_1..item_n` in order.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Item"
+      }
+    }
+  },
+  "required": [
+    "package_kind",
+    "manifest_version",
+    "items"
+  ],
+  "additionalProperties": true,
+  "x-package-kind": "suite.pump_test",
+  "$defs": {
+    "PackageKind": {
+      "description": "Known package kinds.",
+      "oneOf": [
+        {
+          "description": "PdfCraft snapshot export.",
+          "type": "string",
+          "const": "pdfcraft.snapshot_export"
+        },
+        {
+          "description": "Pump acceptance-test package.",
+          "type": "string",
+          "const": "suite.pump_test"
+        }
+      ]
+    },
+    "Item": {
+      "description": "One evidence item.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Item id, `item_{n}` with n starting at 1.",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Item kind, constrained by the package kind.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "kind"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

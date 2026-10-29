@@ -1,0 +1,44 @@
+{
+  "package_kind": "suite.pump_test",
+  "manifest_version": "1.0",
+  "title": "Shop performance test — P-101A (synthetic)",
+  "created_utc": "2026-11-12T14:00:00Z",
+  "tool": {
+    "name": "pump-cli",
+    "version": "0.1.0"
+  },
+  "standard": {
+    "name": "API 610",
+    "edition": "<from contract>"
+  },
+  "overall": "pass",
+  "items": [
+    {
+      "id": "item_1",
+      "kind": "pump_acceptance",
+      "summary_path": "data/acceptance.json"
+    },
+    {
+      "id": "item_2",
+      "kind": "chart",
+      "image": {
+        "path": "evidence/hq.png"
+      },
+      "caption": "Head vs flow"
+    },
+    {
+      "id": "item_3",
+      "kind": "data",
+      "path": "data/test.csv"
+    },
+    {
+      "id": "item_4",
+      "kind": "input",
+      "path": "inputs/job.toml"
+    }
+  ],
+  "reports": {
+    "pdf_path": "report.pdf",
+    "docx_path": "report.docx"
+  }
+}

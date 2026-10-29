@@ -26,4 +26,7 @@ todo = "deny"
 unimplemented = "deny"
 
 [workspace.dependencies]
-# filled by later sprints
+schemars = "1.2.3"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = { version = "1.0.154", features = ["preserve_order"] }
+thiserror = "2.0.21"
