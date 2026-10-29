@@ -1,8 +1,6 @@
 # P1 — PDF Review v0.1 release (`006_pdf-release-v0-1`)
 
-Repo: new standalone `eu-cristofer/pdfcraft` (D-013), on top of the P5 port · Lane: **A** · Depends on: **P5** · Gate: **G1**
-
-> **Re-baselined 2026-10-29 (D-013).** This spec was first registered in the old fork (now `eu-cristofer/pdfcraft_first`, branch `feat/006-pdf-release-v0-1`); that registration is superseded. File paths and line numbers below come from the old base. Re-verify them on the new repo when registering after P5 (upstream split several `ui-egui` files into modules). Release tags restart with the new repo's own scheme, set at registration.
+Repo: `eu-cristofer/pdfcraft` (fork), base branch `feat/crop-panel-unification` @ 17649c1b · Lane: **A** · Depends on: — · Gate: **G1**
 
 ## Goal
 

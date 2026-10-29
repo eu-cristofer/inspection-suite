@@ -1,6 +1,6 @@
 # Inspection Suite — Official Plan
 
-Status: approved for sprint planning · Version 1.3 · Last reviewed: 2026-10-29
+Status: approved for sprint planning · Version 1.4 · Last reviewed: 2026-10-29
 Owner: Cristofer Antoni, for Costa Inspection · Tracking: [`../journey.md`](../journey.md) · Decisions: [`../decisions.md`](../decisions.md)
 
 ## Revision history
@@ -10,7 +10,8 @@ Owner: Cristofer Antoni, for Costa Inspection · Tracking: [`../journey.md`](../
 | 1.0 | 2026-10-29 | First official plan. Defines the suite, 3 repos, 8 projects (P0–P7), 3 lanes and the MVP scope. |
 | 1.1 | 2026-10-29 | typst accepted for PDF reports (D-010); organisation Costa Inspection, slug `costa-inspection` (D-011). |
 | 1.2 | 2026-10-29 | Repos stay on `eu-cristofer` permanently (D-012, supersedes D-011). |
-| 1.3 | 2026-10-29 | New standalone repo `eu-cristofer/pdfcraft` from fresh upstream; old fork archived as `pdfcraft_first`; lane A runs P5 (port) before P1 (release) (D-013). |
+| 1.3 | 2026-10-29 | (Superseded) New standalone repo from fresh upstream, P5 before P1 (D-013). |
+| 1.4 | 2026-10-29 | Design restored (D-014): one fork `eu-cristofer/pdfcraft`, P1 ships first, P5 after G1. Plan text is identical to 1.2. |
 
 ---
 
@@ -46,7 +47,7 @@ Tools in scope:
 
 | Repo | Contents | Visibility | Created by |
 |---|---|---|---|
-| `eu-cristofer/pdfcraft` (standalone, from upstream `3109bb23`; D-013) | PDF Review tool. Syncs from `storytold/pdfcraft` via an `upstream` remote. `eu-cristofer/pdfcraft_first` = read-only archive of the old fork. | public | exists |
+| `eu-cristofer/pdfcraft` (fork; optionally renamed `eu-cristofer/<suite>-pdf` at G1) | PDF Review tool. Tracks `storytold/pdfcraft`. | public | exists |
 | `eu-cristofer/inspection-suite` | Cargo workspace: `evidence-format`, `pump-core`, `report-kit`, `apps/pump-cli`; this plan | public | P0 |
 | `eu-cristofer/costa-inspection-private` | real `tolerances.toml` per API 610 edition, golden cases from past jobs, client report templates | private | P0 |
 
@@ -79,11 +80,11 @@ Crate responsibilities and allowed dependencies (each arrow is a "may depend on"
 | ID | Sprint project slug (repo) | Lane | Depends on | Size | Spec |
 |---|---|---|---|---|---|
 | P0 | `001_suite-bootstrap` (inspection-suite) | user + Claude, sequential | — | ~1 day, 3 sprints | [P0](projects/P0-suite-bootstrap.md) |
-| P1 | pdf-release-v0-1 (new `pdfcraft`, re-registered after P5) | **A** | P5 | 2–3 days, 5 sprints | [P1](projects/P1-pdf-release-v0.1.md) |
+| P1 | `006_pdf-release-v0-1` (fork) | **A** | — | 2–3 days, 5 sprints | [P1](projects/P1-pdf-release-v0.1.md) |
 | P2 | `002_pump-core` (inspection-suite) | **B** | P0 | ~1.5 weeks, 7 sprints | [P2](projects/P2-pump-core.md) |
 | P3 | `003_report-kit` (inspection-suite) | **C** | P0 | ~1 week, 6 sprints | [P3](projects/P3-report-kit.md) |
 | P4 | `004_pump-cli` (inspection-suite) | **B**, with C joining | P2, P3 | ~1 week, 6 sprints | [P4](projects/P4-pump-cli.md) |
-| P5 | crop-review port onto fresh upstream + `evidence-format` adoption (new `pdfcraft`) | **A** (first) | P0 | ~1–2 weeks | [backlog](projects/P5-P7-backlog.md) |
+| P5 | thin-fork port and `evidence-format` adoption (fork) | A | P1, P0 | ~1–2 weeks | [backlog](projects/P5-P7-backlog.md) |
 | P6 | pump GUI (egui) (inspection-suite) | B | P4 | ~1–2 weeks | [backlog](projects/P5-P7-backlog.md) |
 | P7 | vendor-curve digitising: PDF crop → pump tool (both) | C | P4, P5 | ~1–2 weeks | [backlog](projects/P5-P7-backlog.md) |
 
@@ -95,14 +96,14 @@ Slugs follow `/sprint-loop` global numbering per repo. The fork already used 001
 
 ```
            Day 0        Week 1            Week 2            Week 3            Week 4+
-Lane A  │ P5 port onto fresh upstream ──────────────┐ P1 rebrand + release ── v0.1 (G1) ──────►
+Lane A  │ P1 pdf-release ── v0.1 (G1) │ P5 thin-fork port ─────────────────────────►
 User    │ P0 bootstrap ─┐ (G0)        │
 Lane B  │               └─ P2 pump-core ──────────────┐ P4 pump-cli ── v0.1 (G3) │ P6 GUI ►
 Lane C  │               └─ P3 report-kit ───── (G2) ──┘ (joins P4 s4–s5)         │ P7 ──►
 Inputs  │ U1 name · U2 API 610 edition+limits · U3 golden jobs (needed by P2 s6)
 ```
 
-Critical path: **P0 → P2 → P4**. P3 has slack. Lane A (P5 → P1) runs in parallel with all of it (D-013).
+Critical path: **P0 → P2 → P4**. P3 has slack, and P1 runs in parallel with all of it.
 
 ## 7. Gates and milestones
 

@@ -12,12 +12,11 @@ This is the running log of the project: where we are, what happened, what's next
 | ID | Project | Repo | Lane | Status | Progress | Next action |
 |---|---|---|---|---|---|---|
 | P0 | `001_suite-bootstrap` | inspection-suite | user | ✅ done (ready to archive) | 3/3 | Merge PR into `main`; archive with `/sprint-loop archive` |
-| P1 | pdf-release-v0-1 | new `pdfcraft` | A | ⏸ waits for P5 (old registration in `pdfcraft_first` superseded, D-013) | 0/5 | Re-register in the new repo after P5 |
+| P1 | `006_pdf-release-v0-1` | fork `eu-cristofer/pdfcraft` | A | 🟦 registered (branch `feat/006-pdf-release-v0-1`, commit 29119187, local only) | 0/5 | `/sprint-loop run 006_pdf-release-v0-1` in `~/GitHub/pdfcraft.back` (sprint 5 waits for U1) |
 | P2 | `002_pump-core` | inspection-suite | B | ⬜ ready to register | 0/7 | Register after the P0 PR merges; run in its own worktree |
 | P3 | `003_report-kit` | inspection-suite | C | ⬜ ready to register | 0/6 | Register after the P0 PR merges; run in its own worktree |
 | P4 | `004_pump-cli` | inspection-suite | B | ⏸ blocked by P2, P3 | 0/6 | — |
-| P5 | port onto fresh upstream | new `pdfcraft` | A | ⬜ spec to expand (lane A runs it first) | — | Expand the P5 spec, then register it in `~/GitHub/pdfcraft` |
-| P6–P7 | backlog | — | — | 💤 later | — | Expand specs at G3 |
+| P5–P7 | backlog | — | — | 💤 later | — | P5 after G1 (in the fork); P6–P7 at G3 |
 
 Legend: ⬜ not started · 🟦 in progress · ✅ done · ⏸ blocked · 💤 backlog
 
@@ -26,7 +25,7 @@ Legend: ⬜ not started · 🟦 in progress · ✅ done · ⏸ blocked · 💤 b
 | Gate | Target | Status |
 |---|---|---|
 | G0 — Contract frozen | Day 1 | ✅ 2026-10-29 |
-| G1 — PDF Review v0.1 public | Week 2–3 (after P5, D-013) | ⬜ |
+| G1 — PDF Review v0.1 public | Week 1 | ⬜ |
 | G2 — Report kit ready | Week 2 | ⬜ |
 | G3 — Pump Performance v0.1 | Week 3–4 | ⬜ |
 
@@ -59,6 +58,13 @@ Order: register **P0** and **P1** now. Register **P2** and **P3** right after G0
 ---
 
 ## Log
+
+### 2026-10-29 — Design restored (D-014 supersedes D-013)
+- Owner instruction: "follow strictly our design".
+- The standalone `eu-cristofer/pdfcraft` created earlier today was deleted (it held only an upstream copy), and the fork was renamed back from `pdfcraft_first` to **`eu-cristofer/pdfcraft`** (a fork of `storytold/pdfcraft`).
+- `~/GitHub/pdfcraft.back` points at the fork again; `~/GitHub/pdfcraft` is a plain upstream clone again.
+- Lane A: **P1 now** (registered as `006_pdf-release-v0-1`), **P5 after G1**. Plan v1.4 = v1.2 text.
+- **Next:** run P1 in the fork; merge PR #1 and start P2 + P3.
 
 ### 2026-10-29 — Fresh start for the PDF tool (D-013)
 - The old fork was renamed `eu-cristofer/pdfcraft_first` and is kept as the read-only archive of the 001–006 work (local `~/GitHub/pdfcraft.back`).

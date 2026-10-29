@@ -2,21 +2,18 @@
 
 These are outlines, not sprint-ready specs. Each one is expanded into a full spec, in the format of P0–P4, at the gate that unblocks it.
 
-## P5 — PDF Review: port onto fresh upstream and adopt `evidence-format`
+## P5 — PDF fork: thin-fork port and `evidence-format` adoption
 
-Repo: new standalone `eu-cristofer/pdfcraft`, started from upstream `3109bb23` (D-013) · Lane: A, **runs first, before P1** · Unblocked by: G0 · Source of the work: `eu-cristofer/pdfcraft_first`, branch `feat/crop-panel-unification` @ 17649c1b (local checkout `~/GitHub/pdfcraft.back`)
+Repo: fork · Lane: A · Unblocked by: G1 + G0
 
-**Next action:** expand into a sprint-ready spec (it is now on lane A's critical path), then register it in the new repo.
-
-- **Goal:** bring the crop-review / snapshot-export work onto current upstream, in a layout that stays cheap to sync from then on.
+- **Goal:** get the fork current with `storytold/pdfcraft` and keep it cheap to sync from then on.
 - **Steps:**
-  1. Tag `backup/crop-review-v0.1` in `pdfcraft_first`. The repo itself stays as the read-only archive.
-  2. Work on a feature branch of the new repo, whose `main` = upstream `3109bb23`.
-  3. Re-add the crop review / snapshot export as **new files**, with minimal hooks into the upstream layout. Known conflicts appeared in 16 files in the 2026-10-28 dry run (`engine/src/export.rs`, `engine/src/lib.rs`, `ui-egui/src/{lib,canvas,control,panels,editing,commands,chrome}.rs`, and others). Upstream has since split several of these files into modules.
-  4. Bring the fork docs (specs, SOPs, `techind/`) and the 001–005 sprint archives across under `docs/fork/`. Upstream-owned docs stay untouched.
-  5. Move the ~2,800 fork lines of `engine/src/export.rs` into a fork-owned crate (e.g. `crates/evidence-export`) that depends on suite `evidence-format` (as a git dependency) for manifest types. Keep the v1.1 snapshot manifest byte-compatible.
-  6. Add a nightly CI job that builds the fork on the latest `upstream/main`.
-  7. Set a weekly sync routine (`git fetch upstream` + merge or rebase; document it in `docs/fork/fork-sync-sop.md`).
+  1. Tag `backup/crop-review-v0.1`.
+  2. Make a new branch from `upstream/main`.
+  3. Re-add the crop review / snapshot export as **new files**, with minimal hooks into the upstream layout. Known conflicts appeared in 16 files in the 2026-10-28 dry run (`engine/src/export.rs`, `engine/src/lib.rs`, `ui-egui/src/{lib,canvas,control,panels,editing,commands,chrome}.rs`, and others).
+  4. Move the ~2,800 fork lines of `engine/src/export.rs` into a fork-owned crate (e.g. `crates/evidence-export`) that depends on suite `evidence-format` (as a git dependency) for manifest types. Keep the v1.1 snapshot manifest byte-compatible.
+  5. Add a nightly CI job that builds the fork on the latest `upstream/main`.
+  6. Set a weekly rebase routine (document it in `docs/fork/fork-sync-sop.md`).
 - **Done:** the fork diff touches at most about 10 upstream files with small hooks, and the nightly upstream build is green.
 - **Open question:** open an upstream issue about an "area/crop export" extension point. If upstream accepts it, the fork gets thinner.
 
