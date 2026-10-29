@@ -12,7 +12,7 @@ This is the running log of the project: where we are, what happened, what's next
 | ID | Project | Repo | Lane | Status | Progress | Next action |
 |---|---|---|---|---|---|---|
 | P0 | `001_suite-bootstrap` | inspection-suite | user | ✅ done (ready to archive) | 3/3 | Merge PR into `main`; archive with `/sprint-loop archive` |
-| P1 | `006_pdf-release-v0-1` | fork `eu-cristofer/pdfcraft` | A | 🟦 in progress (branch `feat/006-pdf-release-v0-1`, local) | 1/6 | Sprint 1b (baseline repair, D-015) |
+| P1 | `006_pdf-release-v0-1` | fork `eu-cristofer/pdfcraft` | A | 🟦 in progress (branch `feat/006-pdf-release-v0-1`, local) | 2/6 | Sprint 2 (icon, ids, packaging metadata, community links) |
 | P2 | `002_pump-core` | inspection-suite | B | ⬜ ready to register | 0/7 | Register after the P0 PR merges; run in its own worktree |
 | P3 | `003_report-kit` | inspection-suite | C | ⬜ ready to register | 0/6 | Register after the P0 PR merges; run in its own worktree |
 | P4 | `004_pump-cli` | inspection-suite | B | ⏸ blocked by P2, P3 | 0/6 | — |
@@ -58,6 +58,11 @@ Order: register **P0** and **P1** now. Register **P2** and **P3** right after G0
 ---
 
 ## Log
+
+### 2026-10-29 — P1 sprint 1b done: suite green
+- `448d5da7`: real bug fixed in crop review (a quick corner-handle drag missed the handle, because the drag start was hit-tested where the pointer was when egui reported the drag); the OCR dropdown now has an accessible name; outdated tests updated (label helper, panel snapshot list, fill & sign cursor); new deterministic Crops panel snapshot.
+- ui-egui: **1775 passed, 0 failed** with `CRAFT_FONTS_DIR` (absolute path to a craft-fonts checkout, cloned at `~/GitHub/craft-fonts`); without it, only the 10 CJK/Thai font tests fail.
+- **Next:** sprint 2.
 
 ### 2026-10-29 — P1 sprint 1 done; sprint 1b added (D-015)
 - Sprint 1 (`494c4b95`): `branding` module, contributor-original suite mark replacing the ArtCraft logo, "Based on PdfCraft" in About, window title from `APP_NAME`.
