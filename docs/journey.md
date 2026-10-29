@@ -16,7 +16,7 @@ This is the running log of the project: where we are, what happened, what's next
 | P2 | `002_pump-core` | inspection-suite | B | ⬜ ready to register | 0/7 | Register after the P0 PR merges; run in its own worktree |
 | P3 | `003_report-kit` | inspection-suite | C | ⬜ ready to register | 0/6 | Register after the P0 PR merges; run in its own worktree |
 | P4 | `004_pump-cli` | inspection-suite | B | ⏸ blocked by P2, P3 | 0/6 | — |
-| P5 | port onto fresh upstream | new `pdfcraft` | A | ⬜ spec to expand (lane A runs it first) | — | Owner creates `eu-cristofer/pdfcraft` and pushes upstream main; then expand and register P5 |
+| P5 | port onto fresh upstream | new `pdfcraft` | A | ⬜ spec to expand (lane A runs it first) | — | Expand the P5 spec, then register it in `~/GitHub/pdfcraft` |
 | P6–P7 | backlog | — | — | 💤 later | — | Expand specs at G3 |
 
 Legend: ⬜ not started · 🟦 in progress · ✅ done · ⏸ blocked · 💤 backlog
@@ -64,8 +64,9 @@ Order: register **P0** and **P1** now. Register **P2** and **P3** right after G0
 - The old fork was renamed `eu-cristofer/pdfcraft_first` and is kept as the read-only archive of the 001–006 work (local `~/GitHub/pdfcraft.back`).
 - A new **standalone** `eu-cristofer/pdfcraft` starts from current upstream `storytold/pdfcraftbb23`. It is not a GitHub fork, because an account can hold only one fork of a repo.
 - Lane A order is now **P5 (port the crop-review work as fork-owned files) → P1 (rebrand + release)**; G1 moves about 1–2 weeks later.
-- Creating the public repo was blocked by the session's permission check; the owner runs that step.
-- **Next:** the owner creates `eu-cristofer/pdfcraft` and pushes upstream `main`; expand the P5 spec and register it there.
+- `eu-cristofer/pdfcraft` created (public, standalone). `~/GitHub/pdfcraft` now has `origin` = the new repo and `upstream` = `storytold/pdfcraft`, with `main` pushed at upstream `3109bb23`.
+- `~/GitHub/pdfcraft.back` repointed to `eu-cristofer/pdfcraft_first`, so old-fork branches can no longer land in the new repo by accident.
+- **Next:** expand the P5 spec and register it in `~/GitHub/pdfcraft`.
 
 ### 2026-10-29 — G0 reached: `001_suite-bootstrap` complete
 - Sprint 1 (`a03f116`): workspace, licences, AGENTS/CLAUDE conventions, lint and `cargo deny` gates, stub crates.
