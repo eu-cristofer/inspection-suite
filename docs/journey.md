@@ -11,7 +11,7 @@ This is the running log of the project: where we are, what happened, what's next
 
 | ID | Project | Repo | Lane | Status | Progress | Next action |
 |---|---|---|---|---|---|---|
-| P0 | `001_suite-bootstrap` | inspection-suite | user | ⬜ not registered | 0/3 | Create repos `eu-cristofer/inspection-suite` (public) + `eu-cristofer/costa-inspection-private` (private), `git init`, register P0 |
+| P0 | `001_suite-bootstrap` | inspection-suite | user | 🟦 registered (branch `feat/001-suite-bootstrap`) | 0/3 | `/sprint-loop run 001_suite-bootstrap`; create the GitHub repos (needed for CI in sprint 3) |
 | P1 | `006_pdf-release-v0-1` | fork | A | ⬜ not registered | 0/5 | Register in fork on a branch from `feat/crop-panel-unification` |
 | P2 | `002_pump-core` | inspection-suite | B | ⏸ blocked by G0 | 0/7 | Wait for P0 |
 | P3 | `003_report-kit` | inspection-suite | C | ⏸ blocked by G0 | 0/6 | Wait for P0 |

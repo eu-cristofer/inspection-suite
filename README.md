@@ -21,3 +21,7 @@ A suite of tools for an inspection company that turn inspection inputs into trac
   - [P5–P7 backlog](docs/plan/projects/P5-P7-backlog.md)
 - [Dev journey](docs/journey.md): status board, gates, inputs, session log.
 - [Decision log](docs/decisions.md).
+
+## Active sprint projects
+
+- [`001_suite-bootstrap`](docs/changes/001_suite-bootstrap/README.md): workspace, conventions, frozen contracts, CI (gate G0).
