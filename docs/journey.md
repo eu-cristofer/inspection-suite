@@ -12,7 +12,7 @@ This is the running log of the project: where we are, what happened, what's next
 | ID | Project | Repo | Lane | Status | Progress | Next action |
 |---|---|---|---|---|---|---|
 | P0 | `001_suite-bootstrap` | inspection-suite | user | ✅ done (ready to archive) | 3/3 | Merge PR into `main`; archive with `/sprint-loop archive` |
-| P1 | `006_pdf-release-v0-1` | fork `eu-cristofer/pdfcraft` | A | 🟦 in progress (branch `feat/006-pdf-release-v0-1`, pushed) | 4/6 | Sprint 4 (fork docs layout, README without marks) |
+| P1 | `006_pdf-release-v0-1` | fork `eu-cristofer/pdfcraft` | A | ⏸ waits for U1 (branch `feat/006-pdf-release-v0-1`, pushed) | 5/6 | Sprint 5 (release) needs the suite name (U1) |
 | P2 | `002_pump-core` | inspection-suite | B | ⬜ ready to register | 0/7 | Register after the P0 PR merges; run in its own worktree |
 | P3 | `003_report-kit` | inspection-suite | C | ⬜ ready to register | 0/6 | Register after the P0 PR merges; run in its own worktree |
 | P4 | `004_pump-cli` | inspection-suite | B | ⏸ blocked by P2, P3 | 0/6 | — |
@@ -58,6 +58,10 @@ Order: register **P0** and **P1** now. Register **P2** and **P3** right after G0
 ---
 
 ## Log
+
+### 2026-10-29 — P1 sprint 4 done; P1 waits for U1
+- `c4ec8e6b`: fork docs moved to `docs/fork/` with an index; `AGENTS.md`, `CLAUDE.md` and `ROADMAP.md` byte-identical to upstream again (upstream's binding `AGENTS.md` had been overwritten on 2026-10-25 by a generated guide, now `docs/fork/agent-notes.md`); the fork's own short README (D-016, `README.md merge=ours`); the screenshot showing the ArtCraft mark deleted; 002 (superseded), 003 and 005 archived.
+- **Blocked on U1:** sprint 5 needs the suite and app name (and optionally an icon). It also gives the MSI its own `UpgradeCode` and replaces the `ai.storyteller.pdfcraft` id and the "PdfCraft" product name in packaging.
 
 ### 2026-10-29 — P1 sprints 2 and 3 done
 - Sprint 2 (`d92caf7b`):
