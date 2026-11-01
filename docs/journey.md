@@ -12,7 +12,7 @@ This is the running log of the project: where we are, what happened, what's next
 | ID | Project | Repo | Lane | Status | Progress | Next action |
 |---|---|---|---|---|---|---|
 | P0 | `001_suite-bootstrap` | inspection-suite | user | ✅ done (ready to archive) | 3/3 | Merge PR into `main`; archive with `/sprint-loop archive` |
-| P1 | `006_pdf-release-v0-1` | fork `eu-cristofer/pdfcraft` | A | ⏸ waits for U1 (branch `feat/006-pdf-release-v0-1`, pushed) | 5/6 | Sprint 5 (release) needs the suite name (U1) |
+| P1 | `006_pdf-release-v0-1` | fork `eu-cristofer/pdfcraft` | A | ✅ done (ready to archive) | 6/6 | Owner merges fork PR #10; archive the project; P5 starts after G1 |
 | P2 | `002_pump-core` | inspection-suite | B | ⬜ ready to register | 0/7 | Register after the P0 PR merges; run in its own worktree |
 | P3 | `003_report-kit` | inspection-suite | C | ⬜ ready to register | 0/6 | Register after the P0 PR merges; run in its own worktree |
 | P4 | `004_pump-cli` | inspection-suite | B | ⏸ blocked by P2, P3 | 0/6 | — |
@@ -25,7 +25,7 @@ Legend: ⬜ not started · 🟦 in progress · ✅ done · ⏸ blocked · 💤 b
 | Gate | Target | Status |
 |---|---|---|
 | G0 — Contract frozen | Day 1 | ✅ 2026-10-29 |
-| G1 — PDF Review v0.1 public | Week 1 | ⬜ |
+| G1 — PDF Review v0.1 public | Week 1 | ✅ 2026-11-01 |
 | G2 — Report kit ready | Week 2 | ⬜ |
 | G3 — Pump Performance v0.1 | Week 3–4 | ⬜ |
 
@@ -33,7 +33,7 @@ Legend: ⬜ not started · 🟦 in progress · ✅ done · ⏸ blocked · 💤 b
 
 | ID | Input | Needed by | Status |
 |---|---|---|---|
-| U1 | Suite and tool names, icon | G1 (P1 s5) | ⬜ open |
+| U1 | Suite and tool names, icon | G1 (P1 s5) | ✅ **WitnessPoint**: WitnessPoint PDF Review, WitnessPoint Pump Performance; placeholder icon kept (D-018) |
 | U2 | API 610 edition(s) + tolerance values from licensed copy | P2 s5 | ⬜ open |
 | U3 | 2–3 anonymised past shop tests with signed-off results | P2 s6 | ⬜ open |
 | U4 | Sample of the expected report layout | P3 s1 / P4 s3 | ⬜ open |
@@ -58,6 +58,60 @@ Order: register **P0** and **P1** now. Register **P2** and **P3** right after G0
 ---
 
 ## Log
+
+### 2026-11-01 — G1 reached: WitnessPoint PDF Review v0.1 is public
+- Lane/project: A · `006_pdf-release-v0-1` sprint 5 done
+- The owner ran the Windows smoke (non-admin account, portable zip): passed in full.
+- With the macOS smoke of 2026-10-31, the whole checklist passed on the published pre-release `0.14.0-unsigned.20261031`.
+- Fork PR https://github.com/eu-cristofer/pdfcraft/pull/10: CHANGELOG results, sprint 5 ticked, `Status: ready to archive`.
+- **Next:** the owner merges #10; archive `006_pdf-release-v0-1`; P5 (upstream sync) can start.
+
+### 2026-10-31 — v0.1 pre-release published; macOS smoke passed
+- Lane/project: A · `006_pdf-release-v0-1` sprint 5
+- PR #9 merged by the owner (`5e65848d`). Release run 41237856261 (macOS, Windows, release: all green) published https://github.com/eu-cristofer/pdfcraft/releases/tag/0.14.0-unsigned.20261031 (pre-release): macOS universal dmg, macOS CLI zip, Windows x64 portable zip. CI ran `ocr-smoke.sh` on all three packages.
+- **macOS smoke on the published files** (downloaded; SHA-256 matched the release digests):
+  - `ocr-smoke.sh` passed on the CLI zip and on the `.app` from the dmg;
+  - codesign `--strict --deep` OK; bundle id `com.costainspection.witnesspoint-pdf`; x86_64 + arm64; process name "WitnessPoint PDF Review"; no update prompt;
+  - in the app (synthetic 3-line scan, no client data): drew 3 crops, set caption and note on each, saved, closed, reopened: crops, captions and notes kept;
+  - Export Crop Review Package with `report.docx`: item_1..item_3 in order, 3 PNGs, `ocr_text` exactly each crop's line;
+  - About: "WitnessPoint PDF Review", "Based on PdfCraft by the ArtCraft Team…", the fork's help and GitHub links.
+- Deviation from the checklist: the UI has no "save project folder" command (only the tests call it), so "save the project folder, close, reopen" was done with File ▸ Save (the crops are embedded in the PDF).
+- Upstream strings still visible (on the "left on purpose" list in the CHANGELOG): the Help menu says "About PdfCraft"; the export dialog says "…PdfCraft will create inside it"; the macOS executable is named `PdfCraft`.
+- **Next:** the owner runs the Windows non-admin smoke from the portable zip; then tick sprint 5, mark G1, record the results in the fork CHANGELOG.
+
+### 2026-10-31 — Local macOS build finds the upstream update prompt (PR #9)
+- Lane/project: A · `006_pdf-release-v0-1` sprint 5
+- PR #8 merged (`5dcb99f4`). Release run 41132856075: **Windows passed**, including the new 3-crop OCR package check; **macOS never got a runner** (GitHub arm64 capacity), so nothing was published.
+- Owner's idea: build macOS locally. `package.sh --arch universal` on `main` (6 min): dmg and CLI zip are universal (x86_64 + arm64), codesign `--strict --deep` OK, bundle id `com.costainspection.witnesspoint-pdf`, LaunchServices name "WitnessPoint PDF Review"; `ocr-smoke.sh` passed on the CLI zip and on the `.app`.
+- **Blocker found by launching the app:** "PdfCraft v0.14.0 to 0.15.0 — UPDATE AND RESTART". The updater reads upstream's feed and would install upstream's app over ours. Not clicked.
+- Fix in PR https://github.com/eu-cristofer/pdfcraft/pull/9: no check at start; Help ▸ Check for updates opens this fork's releases page; 2 guard tests (both fail without the fix); parity evidence updated. Re-verified on a new local build: no prompt; About shows "WitnessPoint PDF Review", "Based on PdfCraft…", the fork's links. CI green.
+- **Next:** owner merges #9 and dispatches a fresh release (not a re-run of 41132856075, which would ship the prompt).
+
+### 2026-10-30 — Release held back: crop OCR read the wrong area (PR #8)
+- Lane/project: A · `006_pdf-release-v0-1` sprint 5
+- PR #7 merged by the owner (`0882c74d`). The owner dispatched the release (run 40992395586).
+- While preparing the smoke test, found that **every crop's OCR text came from the area at twice its coordinates**: the OCR tile was scaled twice (fork commit `40fa1c31`, 2026-10-26). The evidence image was right, its text wasn't. Hidden while OCR never worked (D-017). It affects the Crops panel, the Export dialog and the package tools.
+- The release run was **cancelled before publishing** (nothing public).
+- Fix in PR https://github.com/eu-cristofer/pdfcraft/pull/8 (`ff02ff1b`): the tile is scaled once; a new engine test (fails without the fix); a false-pass automation test corrected; the release OCR smoke script now exports a 3-crop package and checks each crop's text (fails on the unfixed build).
+- Local smoke (dev build, models beside the CLI): a scanned page with 3 lines gives item_1..item_3 in order, 3 PNGs, `report.docx`, and each crop's `ocr_text` is exactly its line.
+- **Next:** PR #8 CI green, then the owner merges and dispatches the release again (same tag `0.14.0-unsigned.20261029`, `publish=true`); macOS smoke on the published dmg; Windows smoke by the owner.
+
+### 2026-10-29 — P1 sprint 5: final names, PR #7 green, waiting for the owner's merge
+- Lane/project: A · `006_pdf-release-v0-1` sprint 5
+- U1 decided (owner delegated): **WitnessPoint**, D-018.
+- Done (fork): `84be5e3b` final names: app id / bundle id `com.costainspection.witnesspoint-pdf`, `WitnessPoint PDF Review.app`, Windows version info, own MSI UpgradeCode, release title; `44b99d9f` the MSI's context-menu release detection uses the new code too (caught by CI). Two export tests that only passed while OCR couldn't run now pin the right behaviour (the blank-page test fails with the D-017 models). Drafted by the Sonnet drafter; README, CHANGELOG, window title, notes quoting and tests fixed by the orchestrator.
+- Verified: ui-egui 580 + 1192, xtask 55, pdfcraft app, clippy, fmt, assets. PR https://github.com/eu-cristofer/pdfcraft/pull/7: all 9 checks green (incl. FreeBSD, gate, Windows ARM64 install and run).
+- **Waiting on the owner:** merge PR #7 (the agent may not merge without review). Then dispatch `unsigned-release.yml` on `main` with tag `0.14.0-unsigned.20261029` and `publish=true`, run the smoke checklist, tick sprint 5 and mark G1.
+
+### 2026-10-29 — Release workflow fixed; OCR repaired in every package (D-017)
+- Lane/project: A · `006_pdf-release-v0-1` (fixes before sprint 5)
+- Done (fork, branch `feat/006-pdf-release-v0-1`):
+  - `unsigned-release.yml`: macOS job on `macos-15` (run 40854286030 never got a `macos-14` runner, so nothing was published); new `publish` input, off by default, so feature-branch test runs build only;
+  - OCR: every build returned junk (`1`, `T`) because `17649c1b` had replaced the models with mismatched checkpoints during the `.rten` URL brownout. Backported upstream `da8cea2b`'s ONNX models and lookup; the macOS CLI zip now ships the models;
+  - `packaging/ocr-smoke.sh`: the packaged CLI (Windows portable zip, macOS CLI zip, the `.app`'s `Resources/models`) turns text into a picture, OCRs it and checks the words; the release can't publish unless it passes.
+- Verified: run 40860103527 green on `macos-15` + Windows (build only). Locally: engine real-model OCR tests 3/3 (were 0/3), `pdfcraft-ocr` 14/14, automation 280/280 with and without models, fmt, clippy, assets, layers; smoke script passes with models and fails without them.
+- CI run 40862374532: green; OCR smoke test passed on the Windows portable zip, the macOS CLI zip and the macOS `.app` (build only, nothing published).
+- Next: sprint 5, which still needs U1.
 
 ### 2026-10-29 — P1 sprint 4 done; P1 waits for U1
 - `c4ec8e6b`: fork docs moved to `docs/fork/` with an index; `AGENTS.md`, `CLAUDE.md` and `ROADMAP.md` byte-identical to upstream again (upstream's binding `AGENTS.md` had been overwritten on 2026-10-25 by a generated guide, now `docs/fork/agent-notes.md`); the fork's own short README (D-016, `README.md merge=ours`); the screenshot showing the ArtCraft mark deleted; 002 (superseded), 003 and 005 archived.
