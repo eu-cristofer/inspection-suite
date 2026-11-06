@@ -1,0 +1,20 @@
+gantt
+  title Plan vs. reality (dates after 01 Nov are planned targets)
+  dateFormat YYYY-MM-DD
+  axisFormat %d %b
+  section Owner
+  P0 suite bootstrap (done)        :done, p0, 2026-10-29, 1d
+  G0 contract frozen               :milestone, done, g0, 2026-10-29, 0d
+  section Lane A (fork)
+  P1 planned (week 1)              :p1plan, 2026-10-29, 7d
+  P1 actual, sprints 1 to 4        :done, p1a, 2026-10-29, 1d
+  P1 sprint 5 and release saga     :done, p1b, 2026-10-29, 4d
+  G1 PDF Review v0.1 public        :milestone, done, g1, 2026-11-01, 0d
+  P5 thin-fork sync (planned)      :p5, 2026-11-02, 10d
+  section Lane B (pump)
+  P2 pump-core (planned)           :p2, 2026-11-02, 10d
+  P4 pump-cli (planned)            :p4, after p2, 7d
+  section Lane C (reports)
+  P3 report-kit (planned)          :p3, 2026-11-02, 8d
+  G2 report kit ready              :milestone, g2, after p3, 0d
+  G3 Pump Performance v0.1         :milestone, g3, after p4, 0d

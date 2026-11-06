@@ -59,6 +59,13 @@ Order: register **P0** and **P1** now. Register **P2** and **P3** right after G0
 
 ## Log
 
+### 2026-11-01 — Training material: how P1 was built and how to maintain it
+- Added [`docs/training/`](training/README.md): a Marp deck (34 slides), the build record, didactic notes with exercises, a maintain-and-upgrade handbook ("a new PdfCraft version" procedure and a must-keep checklist), a retrospective of the first session's idea, and 8 Mermaid diagrams (sources plus SVGs).
+- Retrospective: 10 of 16 first-session recommendations done, 2 partly, 3 planned, 1 not done (the upstream extension-point issue).
+- **Found while fact-checking:** the shipped fork `NOTICE` still starts with `<Suite> PDF Review` (so do `ATTRIBUTION.*`, `assets/app-icon/*` and `docs/fork/README.md`). Sprint 5's grep only covered `crates apps packaging`. Proposed v0.1.1 hygiene patch.
+- **Found for P5:** upstream's `ci.yml` rejects git dependencies outside `github.com/storytold/`, which conflicts with P5's plan to use `evidence-format` as a git dependency. This needs a decision before P5.
+- Upstream is at v0.16.1 (742 commits past the fork base `83ba2868`).
+
 ### 2026-11-01 — G1 reached: WitnessPoint PDF Review v0.1 is public
 - Lane/project: A · `006_pdf-release-v0-1` sprint 5 done
 - The owner ran the Windows smoke (non-admin account, portable zip): passed in full.

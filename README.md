@@ -21,6 +21,7 @@ A suite of tools for an inspection company that turn inspection inputs into trac
   - [P5–P7 backlog](docs/plan/projects/P5-P7-backlog.md)
 - [Dev journey](docs/journey.md): status board, gates, inputs, session log.
 - [Decision log](docs/decisions.md).
+- [Training](docs/training/README.md): how WitnessPoint PDF Review was built, how to maintain it and upgrade to a new PdfCraft version (Marp slides, notes, record, retrospective).
 
 ## Active sprint projects
 

@@ -1,0 +1,13 @@
+flowchart LR
+  A["1 · no macos-14 runner"] -->|macos-15| B["2 · OCR junk"]
+  B -->|"D-017 + smoke gate"| C["3 · crop OCR at 2x"]
+  C -->|"PR 8"| D["4 · no macos-15 runner"]
+  D -->|"local build"| E["5 · upstream update prompt"]
+  E -->|"PR 9"| F(["published<br/>20261031"])
+  A -.- a["run never started"]
+  B -.- b["real-model tests 0/3"]
+  C -.- c["writing the smoke test"]
+  D -.- d["run 41132856075"]
+  E -.- e["launching the real app"]
+  classDef how fill:#fff,stroke:#bbb,font-style:italic
+  class a,b,c,d,e how

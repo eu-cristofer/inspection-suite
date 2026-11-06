@@ -1,0 +1,19 @@
+sequenceDiagram
+  autonumber
+  actor Owner
+  participant Orch as Orchestrator (Opus)
+  participant Draft as Drafter (Sonnet subagent)
+  participant Repo as Repo + CI
+  Owner->>Orch: /sprint-loop next <project>
+  Orch->>Repo: read tracker, pick first [ ] sprint, verify "Assumes"
+  Orch->>Draft: sprint spec + current files + conventions
+  Draft-->>Orch: FILE: blocks (text only, writes nothing)
+  Orch->>Orch: senior review: fix APIs, conventions, tests
+  Orch->>Repo: apply with Edit/Write
+  Orch->>Repo: run Acceptance (tests, clippy, fmt, xtask)
+  alt acceptance fails
+    Orch->>Draft: redraft with the error output (max 2)
+  end
+  Orch->>Repo: CHANGELOG, tick [x], one commit per sprint, push, PR
+  Repo-->>Owner: PR with green checks
+  Owner->>Repo: review and merge (the agent never merges or publishes)
