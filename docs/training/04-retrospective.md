@@ -1,6 +1,6 @@
 # 04 — Retrospective: was the first session's idea carried out well?
 
-Status: assessment as of 2026-11-01 (G1) · Method: every recommendation from the first planning session (2026-10-29, transcript `eca49010…`) is checked against the repos, the decision log and the published release.
+Status: assessment as of 2026-11-01 (G1) · Method: every recommendation from the first planning session (2026-10-29) is checked against the repos, the decision log and the published release.
 
 ## The idea, in the owner's words and the advice that followed
 
