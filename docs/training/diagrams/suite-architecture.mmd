@@ -1,0 +1,21 @@
+flowchart LR
+  UP["storytold/pdfcraft<br/>(upstream, MIT OR Apache-2.0)"]
+  subgraph GH["github.com/eu-cristofer"]
+    FORK["pdfcraft (fork)<br/>WitnessPoint PDF Review"]
+    SUITE["inspection-suite<br/>Cargo workspace"]
+    PRIV["costa-inspection-private<br/>(private: templates, client data)"]
+  end
+  subgraph WS["inspection-suite crates"]
+    EF["evidence-format<br/>(manifest contract, frozen at G0)"]
+    PC["pump-core<br/>(API 610 calculations)"]
+    RK["report-kit<br/>(DOCX, typst PDF, charts)"]
+    CLI["pump-cli"]
+  end
+  UP -- "merge / sync (P5)" --> FORK
+  SUITE --- WS
+  FORK -. "writes evidence packages<br/>(kind = snapshot)" .-> EF
+  PC --> CLI
+  RK --> CLI
+  EF --> RK
+  EF --> PC
+  PRIV -. "tolerances.toml, templates" .-> CLI

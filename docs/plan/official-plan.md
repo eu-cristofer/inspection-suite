@@ -1,6 +1,6 @@
 # Inspection Suite — Official Plan
 
-Status: approved for sprint planning · Version 1.2 · Last reviewed: 2026-10-29
+Status: approved for sprint planning · Version 1.4 · Last reviewed: 2026-10-29
 Owner: Cristofer Antoni, for Costa Inspection · Tracking: [`../journey.md`](../journey.md) · Decisions: [`../decisions.md`](../decisions.md)
 
 ## Revision history
@@ -10,6 +10,8 @@ Owner: Cristofer Antoni, for Costa Inspection · Tracking: [`../journey.md`](../
 | 1.0 | 2026-10-29 | First official plan. Defines the suite, 3 repos, 8 projects (P0–P7), 3 lanes and the MVP scope. |
 | 1.1 | 2026-10-29 | typst accepted for PDF reports (D-010); organisation Costa Inspection, slug `costa-inspection` (D-011). |
 | 1.2 | 2026-10-29 | Repos stay on `eu-cristofer` permanently (D-012, supersedes D-011). |
+| 1.3 | 2026-10-29 | (Superseded) New standalone repo from fresh upstream, P5 before P1 (D-013). |
+| 1.4 | 2026-10-29 | Design restored (D-014): one fork `eu-cristofer/pdfcraft`, P1 ships first, P5 after G1. Plan text is identical to 1.2. |
 
 ---
 

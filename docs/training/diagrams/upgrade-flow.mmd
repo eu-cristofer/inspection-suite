@@ -1,0 +1,14 @@
+flowchart LR
+  N["New PdfCraft release<br/>upstream (e.g. v0.16.1)"] --> P{"Thin fork<br/>done (P5)?"}
+  P -- "no (today)" --> T["fetch upstream<br/>branch sync/YYYYMMDD<br/>merge upstream/main"]
+  P -- "yes" --> R["rebase the small<br/>hooks on upstream/main"]
+  T --> K["resolve conflicts by hand<br/>with the must-keep checklist"]
+  R --> K
+  K --> X["cargo xtask ci<br/>+ fork tests"]
+  X --> B["release run<br/>publish = false"]
+  B --> S["smoke: ocr-smoke.sh<br/>+ launch the real app"]
+  S --> OK{"all<br/>green?"}
+  OK -- "no" --> K
+  OK -- "yes" --> PR["PR, owner merges"]
+  PR --> PUB["new tag<br/>publish = true"]
+  PUB --> REC["CHANGELOG<br/>+ journey"]

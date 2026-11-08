@@ -1,0 +1,12 @@
+flowchart TB
+  D["workflow_dispatch<br/>tag = 0.14.0-unsigned.YYYYMMDD<br/>publish = true / false"]
+  D --> M["macos job (macos-15)<br/>package.sh --arch universal"]
+  D --> W["windows job<br/>package.ps1 portable zip"]
+  M --> MS1["ocr-smoke.sh on the CLI zip"]
+  M --> MS2["ocr-smoke.sh inside the .app from the dmg"]
+  W --> WS["ocr-smoke.sh on the portable zip"]
+  MS1 & MS2 & WS --> G{"publish?"}
+  G -- "false" --> A["artifacts stay on the run<br/>(build-only check)"]
+  G -- "true" --> R["release job<br/>GitHub pre-release with 3 assets"]
+  R --> S["manual smoke checklist<br/>macOS (agent) + Windows non-admin (owner)"]
+  S --> J["CHANGELOG + journey + tick sprint"]
